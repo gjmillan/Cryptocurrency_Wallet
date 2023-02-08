@@ -4,10 +4,37 @@
 
 ### Background
 
-You work at a startup that is building a new and disruptive platform called KryptoJobs2Go. KryptoJobs2Go is an application that its customers can use to find fintech professionals from among a list of candidates, hire them, and pay them. As KryptoJobs2Go’s lead developer, you have been tasked with integrating the Ethereum blockchain network into the application in order to enable your customers to instantly pay the fintech professionals whom they hire with cryptocurrency.
+The goal of this project is to take the role at a startup that is building a new and disruptive platform called KryptoJobs2Go. KryptoJobs2Go is an application that its customers can use to find fintech professionals from among a list of candidates, hire them, and pay them. As KryptoJobs2Go’s lead developer, you have been tasked with integrating the Ethereum blockchain network into the application in order to enable your customers to instantly pay the fintech professionals whom they hire with cryptocurrency.
 
-In this Challenge, you will complete the code that enables your customers to send cryptocurrency payments to fintech professionals. To develop the code and test it out, you will assume the perspective of a KryptoJobs2Go customer who is using the application to find a fintech professional and pay them for their work.
+In this Challenge, you will see a full completed code that enables your customers to send cryptocurrency payments to fintech professionals. To develop the code and test it out, you will assume the perspective of a KryptoJobs2Go customer who is using the application to find a fintech professional and pay them for their work.
 
+## Result & Outcome
+As noted in the descriptions and screenshots of the application below, you will see and read about the details of the final product. With the python notebooks in this repository, you will see that it contains the code and the execution of the transaction via cryptocurrency to pay the hiring of a candidate. In the following explanation, we dive in detial of the results in executing transaction and how it affected the funds of cryptocurrency in the Ganache application.
+
+### Application Via Streamlit
+In the screenshot below you will see the landing page after launching Streamlit with the python notebook "krypto_jobs". The landing page is broken out into two parts. On the left side of the screen the details of the ethereum account will be displayed, such as the account address, balance, and two drop down menus to select the individual you want to hire and the time in hours. On the right had side of the screen you will find the details of all the potential hires, including their pictures, account address and hourly rate in Ether.
+
+![Image of Streamlit Landing Page](Images/KrytoJobs%20Landing%20Page.png)
+
+### Successful Executed Transaction
+After selecting the candidate and the hours of work, the left-side panel will display the "Total Wage in Ether", this is the expected payment for the hiring of the candidate. To proceed with executing the transaction, you will select the "Send Transaction" button. If the transaction is executed successfully, a balloon display will be shown in the screen with the "validated Transaction Hash".
+
+![Image of Executed Transaction](Images/Transaction%20Validation%20for%20Hiring.png)
+
+
+### Transaction in Ganache
+Below are the screenshots of the executed transaction after hiring the candidate Jo for two hours. Through the Ganache application, we are able to see the transaction details such as the "To" and "From" addresses, gas limits, and value of transactions. The last image below shows the block of the transaction fully executed.
+
+![Image of Ganache](Images/Ganache%20Transaction%201.png)
+
+Ganache transaction details after being executed.
+
+![Image of Ganache](Images/Ganache%20Transaction%20Details.png)
+
+
+---
+
+## Assignment Details & Instructions
 ### What You're Creating
 
 To complete this Challenge, you will use two Python files, both of which are contained in the starter folder.
