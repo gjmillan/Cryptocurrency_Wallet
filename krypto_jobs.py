@@ -29,8 +29,9 @@ import streamlit as st
 from dataclasses import dataclass
 from typing import Any, List
 from web3 import Web3
+from crypto_wallet import generate_account, get_balance #send_transaction
 
-w3 = Web3(Web3.HTTPProvider("HTTP://127.0.0.1:7545"))
+w3 = Web3(Web3.HTTPProvider("HTTP://127.0.0.1:8545"))
 ################################################################################
 # Step 1:
 # Import Ethereum Transaction Functions into the KryptoJobs2Go Application
@@ -156,27 +157,29 @@ st.sidebar.markdown("## Client Account Address and Ethernet Balance in Ether")
 
 # @TODO:
 #  Call the `generate_account` function and save it as the variable `account`
-# YOUR CODE HERE
+account = generate_account()
 
-##########################################
+# ##########################################
 
-# Write the client's Ethereum account address to the sidebar
+# # Write the client's Ethereum account address to the sidebar
 st.sidebar.write(account.address)
 
+# ##########################################
+# # Step 1 - Part 5:
+# # Define a new `st.sidebar.write` function that will display the balance of the
+# # customer’s account. Inside this function, call the `get_balance` function and
+# #  pass it your Ethereum `account.address`.
+
+# # @TODO
+# # Call `get_balance` function and pass it your account address
+# # Write the returned ether balance to the sidebar
+balance = get_balance(w3,account.address)
+print(balance)
+st.sidebar.write(str(balance))
+
 ##########################################
-# Step 1 - Part 5:
-# Define a new `st.sidebar.write` function that will display the balance of the
-# customer’s account. Inside this function, call the `get_balance` function and
-#  pass it your Ethereum `account.address`.
 
-# @TODO
-# Call `get_balance` function and pass it your account address
-# Write the returned ether balance to the sidebar
-# YOUR CODE HERE
-
-##########################################
-
-# Create a select box to chose a FinTech Hire candidate
+# # Create a select box to chose a FinTech Hire candidate
 person = st.sidebar.selectbox("Select a Person", people)
 
 # Create a input field to record the number of hours the candidate worked
@@ -263,11 +266,11 @@ st.sidebar.markdown("## Total Wage in Ether")
 # Calculate total `wage` for the candidate by multiplying the candidate’s hourly
 # rate from the candidate database (`candidate_database[person][3]`) by the
 # value of the `hours` variable
-# YOUR CODE HERE
+wage = hours * hourly_rate
 
-# @TODO
-# Write the `wage` calculation to the Streamlit sidebar
-# YOUR CODE HERE
+# # @TODO
+# # Write the `wage` calculation to the Streamlit sidebar
+st.sidebar.write(wage)
 
 ##########################################
 # Step 2 - Part 2:
@@ -290,17 +293,11 @@ st.sidebar.markdown("## Total Wage in Ether")
 
 if st.sidebar.button("Send Transaction"):
 
-    # @TODO
-    # Call the `send_transaction` function and pass it 3 parameters:
-    # Your `account`, the `candidate_address`, and the `wage` as parameters
-    # Save the returned transaction hash as a variable named `transaction_hash`
-    # YOUR CODE HERE
-
     # Markdown for the transaction hash
     st.sidebar.markdown("#### Validated Transaction Hash")
 
     # Write the returned transaction hash to the screen
-    st.sidebar.write(transaction_hash)
+    st.sidebar.write(send_transaction(w3, account, candidate_address, wage))
 
     # Celebrate your successful payment
     st.balloons()
